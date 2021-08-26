@@ -1,4 +1,4 @@
-package ru.kamuzta.xstreamtest.soma;
+package ru.kamuzta.xstreamtest.soma.entities;
 
 public enum State {
     ON("ON", true),

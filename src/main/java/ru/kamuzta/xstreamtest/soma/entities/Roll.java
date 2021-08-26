@@ -1,4 +1,4 @@
-package ru.kamuzta.xstreamtest.soma;
+package ru.kamuzta.xstreamtest.soma.entities;
 
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -149,7 +149,7 @@ public class Roll implements Comparable<Roll> {
         if (oldStatus != newStatus) {
             try {
                 setStatus(newStatus);
-                Thread.sleep(10); //обновление статуса ролики занимает 10мс
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 System.out.println("InterruptedException во время смены статуса ролика из заказа #" + getOrder().getId() + " из " + oldStatus.getStatusName() + " в " + newStatus.getStatusName());
             }

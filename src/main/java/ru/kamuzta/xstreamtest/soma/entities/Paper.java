@@ -1,4 +1,4 @@
-package ru.kamuzta.xstreamtest.soma;
+package ru.kamuzta.xstreamtest.soma.entities;
 
 import java.lang.reflect.Field;
 

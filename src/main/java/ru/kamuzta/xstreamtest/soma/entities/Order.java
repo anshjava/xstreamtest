@@ -1,4 +1,4 @@
-package ru.kamuzta.xstreamtest.soma;
+package ru.kamuzta.xstreamtest.soma.entities;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -88,7 +88,7 @@ public class Order implements Comparable<Order> {
         if (oldStatus != newStatus) {
             try {
                 this.setStatus(newStatus);
-                Thread.sleep(100); //обновление статуса заказа занимает 100мс
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 System.out.println("InterruptedException во время смены статуса заказа #" + this.getId() + " из " + oldStatus.getStatusName() + " в " + newStatus.getStatusName());
             }

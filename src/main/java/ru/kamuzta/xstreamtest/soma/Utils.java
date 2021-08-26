@@ -1,13 +1,8 @@
 package ru.kamuzta.xstreamtest.soma;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.StringWriter;
+import ru.kamuzta.xstreamtest.soma.entities.*;
+
+import java.io.*;
 import java.security.SecureRandom;
 import java.util.*;
 
@@ -154,8 +149,17 @@ public class Utils {
 
     public static Manager getRandomManager() {
         Manager manager = new Manager(getRandomName());
-        manager.setMachines(getRandomMachinesList(5));
+        manager.setMachines(getRandomMachinesList(2));
+        manager.getMachines().forEach(x -> x.setManager(manager));
         return manager;
+    }
+
+    public static void writeStringToFile(String string, String fileName) {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(fileName, false))) {
+           pw.println(string);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

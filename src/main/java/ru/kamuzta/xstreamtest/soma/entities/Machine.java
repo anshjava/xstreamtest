@@ -1,4 +1,4 @@
-package ru.kamuzta.xstreamtest.soma;
+package ru.kamuzta.xstreamtest.soma.entities;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -87,14 +87,7 @@ public class Machine implements Comparable<Machine> {
     }
 
     public int getFreeCapacity() {
-//        int rollsInQueue = 0;
-//        if (this.getRollQueue().size() > 0) {
-//            for (Roll roll : this.getRollQueue()) {
-//                rollsInQueue += roll.getCount();
-//            }
-//        }
-//        return this.getFullCapacity() - rollsInQueue;
-        return freeCapacity;
+        return this.getFullCapacity() - rollsInQueue;
     }
     public void setFreeCapacity(int freeCapacity) {
         this.freeCapacity = freeCapacity;
@@ -128,7 +121,7 @@ public class Machine implements Comparable<Machine> {
         if (oldState != newState) {
             try {
                 this.setState(newState);
-                Thread.sleep(500); //включение и выключение станка занимает 500мс
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 System.out.println("InterruptedException во время смены состояния станка #" + this.getId() + " из " + oldState.getStateName() + " в " + newState.getStateName());
             }
@@ -143,6 +136,7 @@ public class Machine implements Comparable<Machine> {
             roll.setMachine(this);
             this.rolls.add(roll);
             System.out.println("Ролик " + roll + " распределен на станок #" + this.getId());
+            rollsInQueue = rollsInQueue + roll.getCount();
         }
         this.updateState();
     }

@@ -1,4 +1,4 @@
-package ru.kamuzta.xstreamtest.soma;
+package ru.kamuzta.xstreamtest.soma.entities;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -70,7 +70,7 @@ public class Manager  implements Comparable<Manager> {
         State oldState = getState();
         try {
             this.setState(newState);
-            Thread.sleep(500); //включение и выключение цеха занимает 500мс
+            Thread.sleep(5);
         } catch (InterruptedException e) {
             System.out.println("InterruptedException во время смены состояния цеха из " + oldState.getStateName() + " в " + newState.getStateName());
         }
