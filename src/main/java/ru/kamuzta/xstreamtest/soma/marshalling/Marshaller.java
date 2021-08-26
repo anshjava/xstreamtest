@@ -1,4 +1,4 @@
-package ru.kamuzta.xstreamtest.soma;
+package ru.kamuzta.xstreamtest.soma.marshalling;
 
 import com.thoughtworks.xstream.XStream;
 import ru.kamuzta.xstreamtest.soma.entities.*;
@@ -28,8 +28,9 @@ public class Marshaller {
         xs.useAttributeFor(Machine.class, "state");
         xs.useAttributeFor(Machine.class, "fullCapacity");
         xs.useAttributeFor(Machine.class, "rollsInQueue");
+        xs.useAttributeFor(Machine.class, "freeCapacity");
         xs.omitField(Machine.class, "manager");
-        xs.omitField(Machine.class, "freeCapacity");
+        xs.registerLocalConverter(Machine.class, "freeCapacity", new FreeCapacityConverter());
 
         xs.alias("order", Order.class);
         xs.useAttributeFor(Order.class, "id");

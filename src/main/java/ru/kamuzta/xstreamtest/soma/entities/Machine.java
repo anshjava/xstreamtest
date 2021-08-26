@@ -1,5 +1,8 @@
 package ru.kamuzta.xstreamtest.soma.entities;
 
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamConverter;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Objects;

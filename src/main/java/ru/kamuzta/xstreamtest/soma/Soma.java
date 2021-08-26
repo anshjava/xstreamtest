@@ -2,6 +2,7 @@ package ru.kamuzta.xstreamtest.soma;
 
 import com.thoughtworks.xstream.XStream;
 import ru.kamuzta.xstreamtest.soma.entities.Manager;
+import ru.kamuzta.xstreamtest.soma.marshalling.Marshaller;
 
 
 public class Soma {
