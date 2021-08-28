@@ -10,12 +10,12 @@ import java.util.Arrays;
 public class ValidateManager {
 
     public static void main(String[] args) {
-        Manager manager = Utils.getRandomManager();
-        manager.getMachines().set(0,null);
-        //validateManager(manager);
-        newValidate(manager);
+        Manager manager = new Manager("Андрей");
+        new MyValidate<>(manager, "Проверка менеджера").assertNotNull();
+        new MyValidate<>(manager.getName(), "Проверка имени менеджера").assertNotNull();
 
     }
+
 
     private static void validateManager(Manager manager) {
         Assert.notNull(manager);
@@ -26,11 +26,6 @@ public class ValidateManager {
         manager.getMachines().forEach(Assert::notNull);
     }
 
-    private static void newValidate(Manager manager) {
-        //new Validate<>(manager).of(m->m.getName()).assertNotNull();
-        new Validate<>(manager).of(m->m.getMachines().get(0)).assertNotNull();
 
-
-    }
 }
 

@@ -10,9 +10,8 @@ public class Validate<T>{
         this.base = base;
     }
 
-    public <R> Validate<R> of(Function<T,R> f){
+    public <R> Validate<R> of(Function<T,R> f) {
         //TODO: найти возможность получаь из f  название операнда и запоминать его
-        System.out.println(base.toString());
         return new Validate<R>(f.apply(base));
     }
 
@@ -24,8 +23,9 @@ public class Validate<T>{
         try {
             Assert.notNull(base);
         } catch (Exception e) {
-            throw new AssertException(String.valueOf(base.getClass() + "НУЛЕВОЙ"));
+            throw new AssertException("обнаружен НУЛЕВОЙ объект");
         }
+        System.out.println("валидация успешна, объект base - " + base.getClass().getSimpleName());
 
     }
 
@@ -34,6 +34,7 @@ public class Validate<T>{
     }
 
     public static <T> void assertNotNull(Validate<T> validate){
+        System.out.println("мы в методе assertNotNull(Validate<T> validate)");
         validate.assertNotNull();
     }
 }
